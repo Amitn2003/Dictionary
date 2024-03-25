@@ -1,0 +1,134 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+nav {
+    width: 100%;
+    background-color: rgba(72, 165, 241, 0.918);
+}
+
+nav>ul {
+    font-size: x-large;
+    font-family: "Voces", sans-serif, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    list-style: none;
+    /* background-color: rgba(72, 165, 241, 0.918); */
+    width: 100vw;
+    justify-content: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+}
+
+nav>ul>li {
+    margin: 0.7rem;
+}
+
+nav>ul>li:hover {
+    text-decoration: underline;
+    text-decoration-color: aliceblue;
+
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+
+
+#submitBtn {
+    width: 50vw;
+    padding: 1rem;
+    margin: auto;
+    border-radius: 15rem;
+    border: 0px;
+    font-size: x-large;
+    background-color: rgba(72, 165, 241, 0.836);
+}
+
+#submitBtn:hover {
+    background-color: blue;
+    color: white;
+}
+
+
+
+
+
+
+#word {
+    width: 70vw;
+    height: 4rem;
+    margin: auto;
+    font-size: large;
+    margin-bottom: 1rem;
+    padding: 2rem;
+    border-width: 0.1px;
+    border-radius: 15rem;
+}
+
+#word:focus {
+    border-color: white;
+}
+
+
+.dictRoot {
+    padding: 2rem;
+    font-size: medium;
+    line-height: 1.6;
+    font-family: "Voces", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+b {
+    font-family: "Voces", sans-serif, 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.definations {
+    margin: 0.4rem 1rem;
+    margin-top: 0;
+}
+
+.definations>li {
+    padding: 0.4rem;
+    margin: 0.25rem;
+}
+
+
+
+
+
+
+
+
+
+
+@media only screen and (max-width: 600px) {
+
+    nav>ul {
+        font-weight: 700;
+        letter-spacing: 0.7px;
+        font-size: larger;
+    }
+
+
+
+    #word {
+        padding: 1.5rem;
+    }
+    #submitBtn {
+        font-family: "Voces", sans-serif, 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana;
+        padding: 0.7rem;
+        font-size: larger;
+        letter-spacing: 2px;
+        font-weight: 650;
+        
+    }
+
+}
