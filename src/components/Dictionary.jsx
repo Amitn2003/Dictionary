@@ -200,9 +200,9 @@ const Dictionary = ({ word }) => {
       {word.trim() != "" && <div>The word is: <b>{word}</b></div>}
       
         <div>
-          {word.trim() != "" && <div>The meaning is: <b>{mean}</b></div>}
+          {word.trim() != "" && <div>Meaning: <b>{mean}</b></div>}
           <div>
-          {word.trim() != "" && <span>The definitions are: </span>}
+          {word.trim() != "" && <span>Definitions: </span>}
             <ol className='definations'>
               {definitions.map((def, index) => (
                 <li key={index}>{def}</li>
