@@ -30,7 +30,7 @@ function App() {
 @import url('https://fonts.googleapis.com/css2?family=Voces&display=swap')
 </style>
       <form>
-        <input type="search" name="word" id="word" placeholder='Enter the word...' onChange={handleChange} />
+        <input type="search" name="word" id="word" placeholder='Enter the word...' onChange={handleChange} autoFocus/>
         <button type="submit" id='submitBtn' onClick={submitClicked}>Search</button>
       </form>
       {
