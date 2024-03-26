@@ -18,7 +18,7 @@ nav>ul {
     width: 100vw;
     justify-content: center;
     justify-content: space-between;
-    margin-bottom: 1.5rem;
+    /* margin-bottom: 1.5rem; */
 }
 
 nav>ul>li {
@@ -90,15 +90,6 @@ b {
     font-style: normal;
 }
 
-.definations {
-    margin: 0.4rem 1rem;
-    margin-top: 0;
-}
-
-.definations>li {
-    padding: 0.4rem;
-    margin: 0.25rem;
-}
 
 
 
@@ -122,13 +113,14 @@ b {
     #word {
         padding: 1.5rem;
     }
+
     #submitBtn {
         font-family: "Voces", sans-serif, 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana;
         padding: 0.7rem;
         font-size: larger;
         letter-spacing: 2px;
         font-weight: 650;
-        
+
     }
 
 }

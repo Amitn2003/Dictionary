@@ -104,22 +104,22 @@ const Dictionary = ({ word }) => {
       {word.trim() != "" && <div>The word is: <b>{word}</b></div>}
 
       <div>
-        {word.trim() != "" && loading &&  <div>Meaning: <b>{mean}</b></div> }
+        {word.trim() != "" && loading && <div>Meaning: <b>{mean}</b></div>}
         {
-        // <div>
-        //   {word.trim() != "" && <span>Definitions: {""} </span>}
-        //   <ol className='definations'>
-        //     {definitions.map((def, index) => (
-        //       <li key={index}>{def}</li>
-        //     ))}
-        //   </ol>
-        // </div> 
-            }
+          // <div>
+          //   {word.trim() != "" && <span>Definitions: {""} </span>}
+          //   <ol className='definations'>
+          //     {definitions.map((def, index) => (
+          //       <li key={index}>{def}</li>
+          //     ))}
+          //   </ol>
+          // </div> 
+        }
       </div>
 
       <br /><br />
 
-
+        <hr />
 
 
       <div>
@@ -131,30 +131,37 @@ const Dictionary = ({ word }) => {
           let antonyms = []
           let meanings = []
           let synonyms = []
-          mean["antonyms"].forEach((e) => [
+          let antonymsPresent = false;
+          let meaningsPresent = false;
+          let synonymsPresent = false;
+          mean["antonyms"].forEach((e) => {
             antonyms.push(e, ", ")
-          ])
+            antonymsPresent = true;
+        })
           // console.log("The meanings are before " , mean["definitions"])
 
           mean["definitions"].forEach((m) => {
             // console.log(m["definition"])
             meanings.push(m["definition"])
+            meaningsPresent = true;
           })
           mean["synonyms"].forEach((syn) => {
-            console.log("synonym is ", syn)
-            synonyms.push(syn , ", ")
+            // console.log("synonym is ", syn)
+            synonyms.push(syn, ", ")
+            synonymsPresent = true;
           })
-          console.log("Before returning the syn is : ", synonyms)
+          // console.log("Before returning the syn is : ", synonyms)
           return (<div>
-            The part of speach is : {mean["partOfSpeech"]} <br></br>
-            The antonyms are : {antonyms}   <br></br>
-            The Meanings are : <ol>
+            <span className='font-semibold'>Part of speach : </span><span className=' 
+             font-extrabold text-4xl font-mono tracking-wider '> {mean["partOfSpeech"]} </span> <br></br>
+            {antonymsPresent && <> <span className='font-semibold'>Antonyms : </span>{antonyms}   <br></br></>}
+            {meaningsPresent && <>The <span className='font-semibold tracking-wider'>Meanings</span> are :  <ol>
               {meanings.map((m, i) => {
                 return (
-                  <li key={m}>{m}</li>
+                  <li className='list-decimal px-5 mx-5 text-wrap' key={m}>{m}</li>
                 );
-              })} </ol> <br></br>
-            The synonyms are : {synonyms}
+              })} </ol> </>}<br></br>
+            {synonymsPresent && <> <span className='font-semibold'>Synonyms :</span> {synonyms}</>}
 
             <br></br>
             <hr></hr>
