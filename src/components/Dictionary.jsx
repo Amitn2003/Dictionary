@@ -8,6 +8,7 @@ const Dictionary = ({ word }) => {
     // const [Synonym, setSynonym] = useState([])
     const [meanings, setMeanings] = useState([])
     const [phonetics, setPhonetics] = useState([])
+    const [err, setErr] = useState(false)
 
 
     const analyseAPI = (data) => {
@@ -48,6 +49,13 @@ const Dictionary = ({ word }) => {
         })
     }
 
+    const removeData = () => {
+        setErr(true)
+        setAudio("")
+        setMean("")
+        setMeanings([])
+        setText("")
+    } 
 
 
 
@@ -70,13 +78,17 @@ const Dictionary = ({ word }) => {
                         setDefinitions(firstMeaning?.definitions.map(def => def.definition));
                         analyseAPI(data[0])
                         analyseApi2(data[0]["phonetics"])
+                        setErr(false)
                     } else {
                         setLoading(false);
-                        // Set loading state to false if no meanings are found
+                        removeData()
+                        // alert("Please check your word & try again...")
                     }
                 })
                 .catch((error) => {
                     console.error("Error fetching data:", error);
+                        removeData()
+                    alert("Technical issue occurred! Please try after some time")
                 });
         }
     }, []); // Empty dependency array ensures the effect runs only once when the component mounts
@@ -94,12 +106,16 @@ const Dictionary = ({ word }) => {
                         setDefinitions(firstMeaning?.definitions.map(def => def.definition));
                         analyseAPI(data[0])
                         analyseApi2(data[0]["phonetics"])
+                        setErr(false)
                     } else {
                         setLoading(false); // Set loading state to false if no meanings are found
+                        removeData()                  
                     }
                 })
                 .catch((error) => {
                     console.error("Error fetching data:", error);
+                        removeData()
+                    alert("Technical issue occurred! Please try after some time")
                 });
         }
     }, [word]);
@@ -108,10 +124,10 @@ const Dictionary = ({ word }) => {
         <div className='dictRoot'>
             {//word.trim() === "" && <div>Word is not provided.</div>
             }
-            {word.trim() != "" && text != "" && <div>The word is: <b>: {text}</b></div>}
+            { text && word.trim() != "" && text != "" && <div>The word is: <b>: {text}</b></div>}
             {
-                word.trim() != "" && audio != "" && <div>
-                    <audio className='p-[0.7rem] px-24 drop-shadow-xl m-auto sm:px-12' controls src={audio}></audio>
+                audio && word.trim() != "" && audio != "" && <div>
+                    <audio className='p-[0.5rem] px-24 drop-shadow-xl m-auto sm:px-12 ' controls src={audio}></audio>
                 </div>
 
             }
@@ -132,16 +148,11 @@ const Dictionary = ({ word }) => {
 
             }
             <div>
-                {word.trim() != "" && loading && <div>Meaning: <b>{mean}</b></div>}
                 {
-                    // <div>
-                    //   {word.trim() != "" && <span>Definitions: {""} </span>}
-                    //   <ol className='definations'>
-                    //     {definitions.map((def, index) => (
-                    //       <li key={index}>{def}</li>
-                    //     ))}
-                    //   </ol>
-                    // </div> 
+                    mean && word.trim() != ""  && <div>Meaning: <b>{mean}</b></div>
+                }
+                {
+                    err && <div>Check your word & try again</div>
                 }
             </div>
 
