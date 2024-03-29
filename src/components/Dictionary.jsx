@@ -32,11 +32,12 @@ const Dictionary = ({ word }) => {
         // setText("")
         setPhonetics(data)
         setAudio("")
+        setText("");
         data.forEach((e) => {
-            // if (text == "" && e["text"] != "") {
-            //     setText(e["text"]);
-            //     console.log(e["text"])
-            // }
+            if (text == "" && e["text"] != "") {
+                setText(e["text"]);
+                console.log(e["text"])
+            }
             if (audio === "" && e["audio"] != "") {
                 setAudio(e["audio"]);
                 console.log(e[["audio"]])
@@ -110,11 +111,12 @@ const Dictionary = ({ word }) => {
             {word.trim() != "" && text != "" && <div>The word is: <b>: {text}</b></div>}
             {
                 word.trim() != "" && audio != "" && <div>
-                    <audio controls  src={audio}> Play</audio>
+                    <audio className='p-[0.7rem] px-24 drop-shadow-xl m-auto sm:px-12' controls src={audio}></audio>
                 </div>
 
             }
             {
+
                 phonetics.map((a) => {
                     // a.forEach((ab) => {
                     if (text == "" && a["text"] != "") {
