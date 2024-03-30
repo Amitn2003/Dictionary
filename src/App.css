@@ -50,7 +50,7 @@ form {
 }
 
 #submitBtn:hover {
-    background-color: blue;
+    background-color: rgba(55, 84, 214, 0.897);
     color: white;
 }
 

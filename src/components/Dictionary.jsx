@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+
 const Dictionary = ({ word }) => {
     const [mean, setMean] = useState("");
     const [definitions, setDefinitions] = useState([]);
@@ -9,7 +10,6 @@ const Dictionary = ({ word }) => {
     const [meanings, setMeanings] = useState([])
     const [phonetics, setPhonetics] = useState([])
     const [err, setErr] = useState(false)
-
 
     const analyseAPI = (data) => {
         // console.log("API analysys : ", data)
@@ -55,7 +55,7 @@ const Dictionary = ({ word }) => {
         setMean("")
         setMeanings([])
         setText("")
-    } 
+    }
 
 
 
@@ -87,7 +87,7 @@ const Dictionary = ({ word }) => {
                 })
                 .catch((error) => {
                     console.error("Error fetching data:", error);
-                        removeData()
+                    removeData()
                     alert("Technical issue occurred! Please try after some time")
                 });
         }
@@ -109,12 +109,12 @@ const Dictionary = ({ word }) => {
                         setErr(false)
                     } else {
                         setLoading(false); // Set loading state to false if no meanings are found
-                        removeData()                  
+                        removeData()
                     }
                 })
                 .catch((error) => {
                     console.error("Error fetching data:", error);
-                        removeData()
+                    removeData()
                     alert("Technical issue occurred! Please try after some time")
                 });
         }
@@ -124,9 +124,9 @@ const Dictionary = ({ word }) => {
         <div className='dictRoot'>
             {//word.trim() === "" && <div>Word is not provided.</div>
             }
-            { text && word.trim() != "" && text != "" && <div>The word is: <b>: {text}</b></div>}
+            {text && mean && word.trim() != "" && text != "" && <div>The word is: <b>: {text}</b> </div>}{(word.toLowerCase() == "love" || word.toLowerCase() == "like" || word.toLowerCase() == "amit" ||word.toLowerCase() == "promathi" || word.startsWith("prov")) && <span className='text-5xl inline'>❤️💘💕</span>}
             {
-                audio && word.trim() != "" && audio != "" && <div>
+                audio && mean && word.trim() != "" && audio != "" && <div>
                     <audio className='p-[0.5rem] px-24 drop-shadow-xl m-auto sm:px-12 ' controls src={audio}></audio>
                 </div>
 
@@ -149,7 +149,7 @@ const Dictionary = ({ word }) => {
             }
             <div>
                 {
-                    mean && word.trim() != ""  && <div>Meaning: <b>{mean}</b></div>
+                    mean && word.trim() != "" && <div>Meaning: <b>{mean}</b></div>
                 }
                 {
                     err && <div>Check your word & try again</div>
