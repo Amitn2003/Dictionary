@@ -21,7 +21,7 @@ function App() {
   }
   function submitClicked(e) {
     e.preventDefault()
-    console.log(word.value)
+    // console.log(word.value)
     setDict(word.value)
   }
   return (

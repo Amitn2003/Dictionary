@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 const Dictionary = ({ word }) => {
+    word = word.trim()
     const [mean, setMean] = useState("");
     const [definitions, setDefinitions] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -37,11 +38,11 @@ const Dictionary = ({ word }) => {
         data.forEach((e) => {
             if (text == "" && e["text"] != "") {
                 setText(e["text"]);
-                console.log(e["text"])
+                // console.log(e["text"])
             }
             if (audio === "" && e["audio"] != "") {
                 setAudio(e["audio"]);
-                console.log(e[["audio"]])
+                // console.log(e[["audio"]])
             }
             if (audio != "" && text != "") {
                 return;
@@ -67,7 +68,9 @@ const Dictionary = ({ word }) => {
             setText("")
             setAudio("")
             setDefinitions([])
-            fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
+            // const encoded = encodeURI(word);
+
+            fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${encodeURI(word)}`)
                 .then((res) => res.json())
                 .then((data) => {
                     const meanings = data[0]?.meanings;
@@ -124,7 +127,7 @@ const Dictionary = ({ word }) => {
         <div className='dictRoot'>
             {//word.trim() === "" && <div>Word is not provided.</div>
             }
-            {text && mean && word.trim() != "" && text != "" && <div>The word is: <b>: {text}</b> </div>}{(word.toLowerCase() == "love" || word.toLowerCase() == "like" || word.toLowerCase() == "amit" ||word.toLowerCase() == "promathi" || word.startsWith("prov")) && <span className='text-5xl inline'>❤️💘💕</span>}
+            {text && mean && word.trim() != "" && text != "" && <div>The word is: <b>: {text}</b> </div>}{(word.toLowerCase() == "love" || word.toLowerCase() == "like" || word.toLowerCase() == "amit" || word.toLowerCase() == "promathi" || word.startsWith("prov")) && <span className='text-5xl inline'>❤️💘💕</span>}
             {
                 audio && mean && word.trim() != "" && audio != "" && <div>
                     <audio className='p-[0.5rem] px-24 drop-shadow-xl m-auto sm:px-12 ' controls src={audio}></audio>
@@ -137,11 +140,11 @@ const Dictionary = ({ word }) => {
                     // a.forEach((ab) => {
                     if (text == "" && a["text"] != "") {
                         setText(a["text"]);
-                        console.log(a["text"])
+                        // console.log(a["text"])
                     }
                     if (audio === "" && a["audio"] != "") {
                         setAudio(a["audio"]);
-                        console.log(a[["audio"]])
+                        // console.log(a[["audio"]])
                     }
                     // })
                 })
